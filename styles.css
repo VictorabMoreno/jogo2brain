@@ -2,7 +2,10 @@
   --board-rows: ;
   --board-columns: ;
 
-  --tile-size: min(60px, calc(var(--board-columns) * 1.25vw));
+  --board-width: calc((var(--tile-size) + var(--tile-margin) * 2) * var(--board-columns));
+  --board-height: calc((var(--tile-size) + (var(--tile-margin) + .5vh) * 2) * var(--board-rows));
+
+  --tile-size: min(60px, 14vw, calc(50vh / var(--board-rows)));
   --tile-margin: calc(var(--tile-size) / 20);
 }
 * {
@@ -14,43 +17,55 @@
 }
 
 body {
-  text-align: center;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#title {
+  width: min(700px, 96vw);
+  height: 6vh;
+  margin: 0 auto;
+  padding: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: min(36px, 6vh);
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 hr {
   margin: 0 auto;
   height: 1px;
   border: none;
-  background-color: #01c;
-  width: calc((var(--tile-size) + var(--tile-margin) * 7) * var(--board-columns));
-}
-
-#title {
-  font-size: 36px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  margin: 12px;
+  background-color: black;
+  width: min(700px, 96vw);
 }
 
 #board {
-  background-color: #ece;
+  width: var(--board-width);
+  height: var(--board-height);
   margin: 0 auto;
-  width: calc((var(--tile-size) + var(--tile-margin) * 2) * var(--board-columns));
-  height: calc((var(--tile-size) + var(--tile-margin) * 4) * var(--board-rows));
+  padding: 0px;
 
   display: flex;
   flex-wrap: wrap;
-  align-content: space-between;
   align-content: center;
 }
 
 .tile {
   width: var(--tile-size);
   height: var(--tile-size);
-  margin: calc(var(--tile-margin) * 2) var(--tile-margin);
+  margin: calc(var(--tile-margin) + .5vh) var(--tile-margin);
   
-  border: 1px solid #b5e;
+  border: 1px solid black;
   color: black;
-  font-size: 30px;
+  font-size: calc(var(--tile-size) / 2);
   font-weight: bold;
   display: flex;
   justify-content: center;
@@ -70,4 +85,14 @@ hr {
   background-color: grey;
   color: white;
   border-color: purple;
+}
+
+#keyboard {
+  height: 25vh;
+  width: min(700px, 96vw);
+  margin: 0 auto;
+  margin-bottom: 6px;
+  padding: 6px;
+
+  border: 1px solid black;
 }

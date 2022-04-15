@@ -1,5 +1,5 @@
 var height = 6; // número de tentativas
-var width = 8; // quantidade de letras da palavra
+var width = 5; // quantidade de letras da palavra
 
 var root = document.documentElement;
 root.style.setProperty('--board-rows', height);
@@ -32,7 +32,6 @@ function intialize() {
   document.addEventListener("keyup", (e) => {
     if (gameOver) return;
 
-    // alert(e.code);
     if ("KeyA" <= e.code && e.code <= "KeyZ"){
       if (col < width) {
         let currTile = document.getElementById(row.toString() + '-' + col.toString());
@@ -41,6 +40,13 @@ function intialize() {
           col += 1;
         }
       }
+    }
+    else if (e.code == "Backspace") {
+      if (0 < col && col <= width) {
+        col -= 1;
+      }
+      let currTile = document.getElementById(row.toString() + '-' + col.toString());
+      currTile.innerText = "";
     }
   });
 
