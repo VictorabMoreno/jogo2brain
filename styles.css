@@ -1,0 +1,73 @@
+:root {
+  --board-rows: ;
+  --board-columns: ;
+
+  --tile-size: min(60px, calc(var(--board-columns) * 1.25vw));
+  --tile-margin: calc(var(--tile-size) / 20);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+}
+hr {
+  margin: 0 auto;
+  height: 1px;
+  border: none;
+  background-color: #01c;
+  width: calc((var(--tile-size) + var(--tile-margin) * 7) * var(--board-columns));
+}
+
+#title {
+  font-size: 36px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin: 12px;
+}
+
+#board {
+  background-color: #ece;
+  margin: 0 auto;
+  width: calc((var(--tile-size) + var(--tile-margin) * 2) * var(--board-columns));
+  height: calc((var(--tile-size) + var(--tile-margin) * 4) * var(--board-rows));
+
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  align-content: center;
+}
+
+.tile {
+  width: var(--tile-size);
+  height: var(--tile-size);
+  margin: calc(var(--tile-margin) * 2) var(--tile-margin);
+  
+  border: 1px solid #b5e;
+  color: black;
+  font-size: 30px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.correct {
+  background-color: green;
+  color: white;
+  border-color: purple;
+}
+.present {
+  background-color: yellow;
+  color: white;
+  border-color: purple;
+}
+.absent {
+  background-color: grey;
+  color: white;
+  border-color: purple;
+}
