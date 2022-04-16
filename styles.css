@@ -5,9 +5,14 @@
   --board-width: calc((var(--tile-size) + var(--tile-margin) * 2) * var(--board-columns));
   --board-height: calc((var(--tile-size) + (var(--tile-margin) + .5vh) * 2) * var(--board-rows));
 
-  --tile-size: min(60px, 14vw, calc(50vh / var(--board-rows)));
   --tile-margin: calc(var(--tile-size) / 20);
+  --tile-size: min(60px, calc(86vw / var(--board-columns)), calc(50vh / var(--board-rows)));
 }
+
+#current-tile {
+  background-color: grey;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -20,25 +25,38 @@ body {
   width: 100vw;
   height: 100vh;
 
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-
-#title {
+header {
   width: min(700px, 96vw);
   height: 6vh;
   margin: 0 auto;
-  padding: 6px;
+}
+#title {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: min(36px, 6vh);
+  text-transform: uppercase;
+  font-size: min(22px, 5vh, 3vw);
   font-weight: bold;
   letter-spacing: 2px;
+  text-align: center;
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
+/*
 hr {
   margin: 0 auto;
   height: 1px;
@@ -46,11 +64,36 @@ hr {
   background-color: black;
   width: min(700px, 96vw);
 }
+*/
 
+
+#notify-container {
+  width: fit-content;
+  height: min(36px, 5vh, calc(var(--tile-size) / 1.8));
+  margin: 0 auto;
+  padding: 0 min(30px, 5vw, 4vh);
+
+  font-size: min(24px, 3vh, 6vw, calc(var(--tile-size) / 2.5));
+
+  display: flex;
+  align-items: center;
+
+  display: none;
+}
+#answer {
+  font-weight: bold;
+}
+
+
+#board-container {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 6px;
+}
 #board {
+
   width: var(--board-width);
   height: var(--board-height);
-  margin: 0 auto;
   padding: 0px;
 
   display: flex;
