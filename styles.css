@@ -46,7 +46,7 @@ header {
   justify-content: center;
 
   text-transform: uppercase;
-  font-size: min(22px, 5vh, 3vw);
+  font-size: min(26px, 5vh, 5vw);
   font-weight: bold;
   letter-spacing: 2px;
   text-align: center;
@@ -74,10 +74,8 @@ hr {
   padding: 0 min(30px, 5vw, 4vh);
 
   font-size: min(24px, 3vh, 6vw, calc(var(--tile-size) / 2.5));
-
-  display: flex;
+  
   align-items: center;
-
   display: none;
 }
 #answer {
@@ -89,6 +87,9 @@ hr {
   width: fit-content;
   margin: 0 auto;
   padding: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 #board {
 
@@ -116,18 +117,18 @@ hr {
 }
 .correct {
   background-color: green;
-  color: white;
-  border-color: purple;
+  color: whitesmoke;
+  border-color: red;
 }
 .present {
-  background-color: yellow;
-  color: white;
-  border-color: purple;
+  background-color: orange;
+  color: whitesmoke;
+  border-color: red;
 }
 .absent {
   background-color: grey;
-  color: white;
-  border-color: purple;
+  color: whitesmoke;
+  border-color: red;
 }
 
 #keyboard {
