@@ -30,6 +30,14 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
+body > * {
+  margin: 0 auto;
+}
+.btn-exit-game {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 header {
   width: min(700px, 96vw);
   height: 6vh;
@@ -73,13 +81,17 @@ hr {
   margin: 0 auto;
   padding: 0 min(30px, 5vw, 4vh);
 
+  visibility: hidden;
+
   font-size: min(24px, 3vh, 6vw, calc(var(--tile-size) / 2.5));
   
+  display: flex;
   align-items: center;
-  display: none;
+  user-select: none;
 }
 #answer {
   font-weight: bold;
+  display: none;
 }
 
 
@@ -100,6 +112,7 @@ hr {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: center;
 }
 
 .tile {
@@ -129,6 +142,21 @@ hr {
   background-color: grey;
   color: whitesmoke;
   border-color: red;
+}
+#win-popup {
+  background-color: #ffffffcf;
+  border: 1px solid black;
+  width: calc(var(--board-width) + var(--tile-margin) * 2);
+  height: fit-content;
+  padding: 20px;
+  
+  text-align: center;
+  line-height: 30px;
+  position: absolute;
+
+  display: block;
+  display: none;
+
 }
 
 #keyboard {
