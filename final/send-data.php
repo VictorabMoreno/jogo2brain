@@ -5,7 +5,13 @@
   $sentCode = $_GET['sent-code'];
   $sentAttempts = $_GET['sent-attempts'];
 
-  $insertQuery = "INSERT INTO players (secretWord, wordPass, gameAttempts) VALUES ('$sentWord', '$sentCode', '$sentAttempts')";
+  $userContent = $_GET['sent-content'];
+  $showSecretWord = $_GET['show-secret-word'];
+
+
+  $insertQuery = "INSERT INTO players
+  (secretWord, wordPass, gameAttempts, userContent, showWord) VALUES
+  ('$sentWord', '$sentCode', '$sentAttempts', '$userContent', '$showSecretWord')";
   mysqli_query($sqlConnect, $insertQuery);
 
   header('location:./pages/index.php');

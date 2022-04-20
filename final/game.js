@@ -1,25 +1,27 @@
 // var word = "teste".toUpperCase(); // palavra secreta
 word = word.toUpperCase();
-console.log(word);
-console.log(attempts);
+console.log("Palavra: " + word);
+console.log("Tentativas: " + attempts);
+console.log("Conteúdo: " + userContent);
+console.log("Mostrar a palavra? " + showSecretWord);
 
 var height = attempts; // número de tentativas do jogo atual (max 14)
 var width = word.length; // quantidade de letras da palavra (atribuição automática)
+
 var row = 0; // tentativa atual (linha que o jogador está)
 var col = 0; // letra atual (coluna que o jogador está)
-
 var gameOver = false; // se o jogo está ativo
 
-var cssRoot = document.documentElement; // atribuição do elemento root
 
+var cssRoot = document.documentElement; // atribuição do elemento root
 function setCss(elem, prop, value) {
   // estiliza elementos
   elem.style.setProperty(prop, value);
 }
+setCss(cssRoot, '--board-columns', width);
+setCss(cssRoot, '--board-rows', height);
 window.onload = function(){
   intialize();
-  setCss(cssRoot, '--board-rows', height);
-  setCss(cssRoot, '--board-columns', width);
 }
 
 function intialize() {
@@ -104,6 +106,7 @@ function processInput(e) {
     if (0 < col && col <= width) {
       col -= 1;
     }
+
     let currTile = document.getElementById(row.toString() + '-' + col.toString());
     currTile.innerText = "";
   }
@@ -117,9 +120,11 @@ function processInput(e) {
     gameOver = true;
     console.log("Jogo fracassado");
 
-    document.getElementById("answer").innerHTML = word; // insere a palavra secreta no html
-    setCss(document.getElementById("answer"), "display", "inline");
-    setCss(document.getElementById("notify-container"), "visibility", "visible");
+    setCss(document.getElementById("lose-popup"), "display", "block");
+    if (showSecretWord) {
+      setCss(document.getElementById("answer"), "display", "block");
+      document.getElementById("answer").innerHTML = "A palavra secreta era " + word; // insere a palavra secreta no html
+    }
   }
 }
 
@@ -140,7 +145,6 @@ function update() {
   for (let c = 0; c < width; c++) {
     let currTile = document.getElementById(row.toString() + '-' + c.toString());
     let letter = currTile.innerText;
-    let finalAttempts = row + 1;
 
     if (word[c] == letter) {
       currTile.classList.add("correct");
@@ -152,16 +156,12 @@ function update() {
       correct += 1;
       letterCount[letter] -= 1;
     }
-    
+
     if (correct == width) {
       gameOver = true;
-      console.log("Jogo bem-sucedido. Tentativa " + finalAttempts);
-
-
       setCss(document.getElementById("win-popup"), "display", "block");
-      setTimeout(function() {
-      //  window.location.href = "secret_content.html";
-      }, 4200)
+      console.log("Jogo bem-sucedido. Tentativa " + (row + 1));
+      document.getElementById("user-content").innerHTML = userContent; // insere a palavra secreta no html
     }
   }
 
