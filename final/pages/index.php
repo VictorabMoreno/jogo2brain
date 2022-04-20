@@ -15,7 +15,7 @@
 <body>
   <h1>Bem vindo ao Joguinho2! O que deseja fazer?</h1>
   <hr>
-  <h2><a href="game-page.php">Jogar:</a></h2>
+  <!-- <h2><a href="game-page.php">Jogar:</a></h2> -->
 
   <form action="./index.php" method="get">
     Insira o código do jogo:
