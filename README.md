@@ -1,1 +1,1 @@
-![image](https://user-images.githubusercontent.com/94730998/166263536-010417c5-567a-4f46-a183-71975eb046f4.png)
+![Captura de Tela (2)](https://user-images.githubusercontent.com/94730998/166264572-23e6c082-7f38-4533-92e6-451d5a5f5646.png)
